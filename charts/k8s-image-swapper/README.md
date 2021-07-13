@@ -45,6 +45,9 @@ Mirror images into your own registry and swap image references automatically.
 | patch.podAnnotations | object | `{}` |  |
 | patch.priorityClassName | string | `""` |  |
 | patch.resources | object | `{}` |  |
+| certManager.enabled | bool | `false` |  |
+| certManager.issuerRef.name | string | `issuer` |  |
+| certManager.issuerRef.kind | string | `ClusterIssuer` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | podSecurityPolicy.enabled | bool | `false` |  |

@@ -141,6 +141,25 @@
       },
       "type": "object"
     },
+    "certManager": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "issuerRef": {
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "kind": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "podAnnotations": {
       "type": "object"
     },

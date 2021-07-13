@@ -85,6 +85,13 @@ patch:
   nodeSelector: {}
   resources: {}
 
+# Will generate the TLS certificate using cert-manager
+certManager:
+  enabled: false
+  # issuerRef:
+    # name: "issuer"
+    # kind: "ClusterIssuer"
+
 webhook:
   failurePolicy: Ignore
 

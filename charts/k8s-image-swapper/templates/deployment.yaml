@@ -49,8 +49,8 @@ spec:
           {{- end }}
           args:
             - --config=/.k8s-image-swapper.yaml
-            - --tls-cert-file=/usr/local/certificates/cert
-            - --tls-key-file=/usr/local/certificates/key
+            - --tls-cert-file=/usr/local/certificates/{{ if .Values.certManager.enabled }}tls.crt{{ else }}cert{{ end }}
+            - --tls-key-file=/usr/local/certificates/{{ if .Values.certManager.enabled }}tls.key{{ else }}key{{ end }}
           ports:
             - name: https
               containerPort: 8443
@@ -72,7 +72,7 @@ spec:
               subPath: config.yaml
               mountPath: /.k8s-image-swapper.yaml
               readOnly: true
-            {{- if .Values.patch.enabled }}
+            {{- if or .Values.patch.enabled .Values.certManager.enabled }}
             - name: webhook-cert
               mountPath: "/usr/local/certificates/"
               readOnly: true
@@ -81,7 +81,7 @@ spec:
         - name: {{ include "k8s-image-swapper.fullname" . }}
           configMap:
             name: {{ include "k8s-image-swapper.fullname" . }}
-        {{- if .Values.patch.enabled }}
+        {{- if or .Values.patch.enabled .Values.certManager.enabled }}
         - name: webhook-cert
           secret:
             secretName: {{ template "k8s-image-swapper.fullname". }}
