@@ -31,6 +31,7 @@ Mirror images into your own registry and swap image references automatically.
 | config.target.aws.accountId | string | `"12345678"` |  |
 | config.target.aws.region | string | `"ap-southeast-2"` |  |
 | containerPort | int | `8443` |  |
+| deployment.annotations | object | `{}` |  |
 | dev.enabled | bool | `false` |  |
 | dev.webhookURL | string | `"https://xxx.ngrok.io"` |  |
 | fullnameOverride | string | `""` |  |
